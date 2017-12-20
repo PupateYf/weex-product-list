@@ -1,76 +1,26 @@
 <template>
-  <div class="wrapper">
-    <div class="product-list-holder">
-            <div class="product-item" v-for="item in goods">
-                <image class="product-image" resize="cover" :src="item.small_image"></image>
-                <div class="product-info">
-                    <div class="price-holder">
-                        <text class="product-price">¥{{item.vipshop_price}}</text><text class="product-off-price">一口价</text>
-                    </div>
-                    <text class="product-name">{{item.product_name}}</text>
-                </div>
-            </div>
-        </div>
-  </div>
+    <div class="wrapper">
+        <scroller>
+            <product :products="goods"></product>
+        </scroller>
+    </div>
 </template>
 
 <style scoped>
 .wrapper {
-  align-items: center;
-  background: #f3f4f5;
-}
-.product-list-holder {
-  padding: 0 14px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.product-item {
-  width: 354px;
-  height: 640px;
-  margin-bottom: 14px;
-  background: white;
-}
-.product-image {
-  width: 350px;
-  height: 440px;
-}
-.product-name {
-  font-size: 24px;
-  display: block;
-  margin-top: 30px;
-  lines: 2;
-  color: #585c64;
-  text-overflow: ellipsis;
-}
-.product-info {
-  padding: 30px 20px 0 20px;
-}
-.price-holder {
-  flex-direction: row;
-}
-.product-price {
-  font-size: 30px;
-  line-height: 30px;
-  color: black;
-  overflow: hidden;
-  lines: 1;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.product-off-price {
-  margin-left: 20px;
-  color: #98989f;
-  font-size: 25px;
-  line-height: 30px;
+  background-color: #f3f4f5;
+  /* background: red; */
 }
 </style>
 
 <script>
-import productData from "./product"
+import productData from "./productData";
+import product from "./product.vue"
 
 export default {
+  components: {
+    product
+  },
   data() {
     return {
       goods: productData
